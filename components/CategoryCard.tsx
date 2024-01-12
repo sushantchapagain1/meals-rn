@@ -4,12 +4,14 @@ import {Platform, Pressable, StyleSheet, Text, View} from 'react-native';
 type CategoryCardProps = {
   title: string;
   color: string;
+  onPress: () => void;
 };
 
-const CategoryCard = ({color, title}: CategoryCardProps) => {
+const CategoryCard = ({color, title, onPress}: CategoryCardProps) => {
   return (
     <View style={styles.item}>
       <Pressable
+        onPress={onPress}
         style={({pressed}) => [
           styles.itemInner,
           pressed ? styles.textPressed : null,

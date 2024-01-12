@@ -4,20 +4,24 @@ import {StatusBar, StyleSheet, View} from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import CategoriesScreen from './screens/CategoriesScreen';
+import CategoriesOverviewScreen from './screens/CategoriesOverviewScreen';
 
 const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
-    <NavigationContainer>
-      <View style={styles.app}>
-        <StatusBar barStyle="light-content" />
+    <>
+      <StatusBar barStyle="dark-content" />
+      <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name="categories" component={CategoriesScreen} />
+          <Stack.Screen name="Categories" component={CategoriesScreen} />
+          <Stack.Screen
+            name="CategoriesOverview"
+            component={CategoriesOverviewScreen}
+          />
         </Stack.Navigator>
-        <CategoriesScreen />
-      </View>
-    </NavigationContainer>
+      </NavigationContainer>
+    </>
   );
 };
 
