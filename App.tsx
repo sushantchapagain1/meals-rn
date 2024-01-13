@@ -13,11 +13,29 @@ const App = () => {
     <>
       <StatusBar barStyle="dark-content" />
       <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen name="Categories" component={CategoriesScreen} />
+        <Stack.Navigator
+          screenOptions={{
+            headerStyle: {
+              backgroundColor: '#351401',
+            },
+            headerTintColor: 'white',
+            contentStyle: {
+              backgroundColor: '#3f2f25',
+            },
+          }}>
+          <Stack.Screen
+            name="Categories"
+            component={CategoriesScreen}
+            options={{title: 'All Categories'}}
+          />
           <Stack.Screen
             name="CategoriesOverview"
             component={CategoriesOverviewScreen}
+            // we can have access of route and navigation in option obj through a callback
+            // options={({navigation,route}) => {
+            //   const catId = route.params.categoryId;
+            //   return {title: catId};
+            // }}
           />
         </Stack.Navigator>
       </NavigationContainer>
