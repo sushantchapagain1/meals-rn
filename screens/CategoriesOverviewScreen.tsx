@@ -16,13 +16,19 @@ const CategoriesOverviewScreen = ({navigation, route}: any) => {
     navigation.setOptions({title: catName});
   }, [navigation, catId]);
 
+  function handlePress(mealId: number | string) {
+    navigation.navigate('MealsDetail', {mealsId: mealId});
+  }
+
   return (
     <View>
       <FlatList
         data={filteredMeals}
         keyExtractor={item => item.id}
         renderItem={({item}) => (
-          <Pressable style={({pressed}) => pressed && styles.pressed}>
+          <Pressable
+            style={({pressed}) => pressed && styles.pressed}
+            onPress={() => handlePress(item.id)}>
             <View style={styles.item}>
               <Image source={{uri: item.imageUrl}} style={styles.image} />
               <View style={styles.itemDetail}>
