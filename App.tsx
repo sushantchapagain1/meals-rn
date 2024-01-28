@@ -1,6 +1,6 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import {StatusBar, StyleSheet, View} from 'react-native';
+import {StatusBar, StyleSheet, Text, View} from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import CategoriesScreen from './screens/CategoriesScreen';
@@ -41,7 +41,9 @@ const App = () => {
           <Stack.Screen
             name="MealsDetail"
             component={MealsOverviewScreen}
-            options={{title: 'Meals Detail'}}
+            options={{
+              title: 'Meals Detail',
+            }}
           />
         </Stack.Navigator>
       </NavigationContainer>

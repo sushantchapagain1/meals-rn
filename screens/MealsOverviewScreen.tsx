@@ -1,12 +1,31 @@
 import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import React, {useLayoutEffect} from 'react';
 import {MEALS} from '../data/dummy-data';
 
-const MealsOverviewScreen = ({route}: any) => {
+import IonIcons from 'react-native-vector-icons/Ionicons';
+
+const MealsOverviewScreen = ({route, navigation}: any) => {
   const mealsId = route.params.mealsId;
   const meal = MEALS.find(meal => meal.id === mealsId);
 
-  // not separating repeated and reusable styling,colors  and compo on purpose to save time .
+  // using useEffect sets the Element or Component only after component has been mounted so
+  // we can see a slight deslay while rendering the headerRightIcon so useLayout
+  //  solves the problem likes setting the element or component during the rendering phase.
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <IonIcons
+          name="heart-outline"
+          onPress={handleFavPress}
+          style={{color: 'white', fontSize: 30}}
+        />
+      ),
+    });
+  });
+
+  function handleFavPress() {
+    console.log('Pressed');
+  }
 
   return (
     meal && (
