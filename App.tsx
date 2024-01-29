@@ -1,13 +1,58 @@
-import React from 'react';
+import 'react-native-gesture-handler';
+import {StatusBar, Text} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
-import {StatusBar, StyleSheet, Text, View} from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {createDrawerNavigator} from '@react-navigation/drawer';
 
 import CategoriesScreen from './screens/CategoriesScreen';
 import CategoriesOverviewScreen from './screens/CategoriesOverviewScreen';
 import MealsOverviewScreen from './screens/MealsOverviewScreen';
+import FavrouiteScreen from './screens/FavrouiteScreen';
+import IonIcons from 'react-native-vector-icons/Ionicons';
 
 const Stack = createNativeStackNavigator();
+const Drawer = createDrawerNavigator();
+
+function DrawerScreens() {
+  return (
+    <Drawer.Navigator
+      screenOptions={{
+        drawerActiveBackgroundColor: '#e4baa1',
+        drawerActiveTintColor: '#351401',
+        drawerInactiveTintColor: '#fef9f6',
+        drawerStyle: {
+          backgroundColor: '#351401',
+          // width: 240,
+        },
+        headerStyle: {
+          backgroundColor: '#351401',
+        },
+        headerTintColor: 'white',
+        sceneContainerStyle: {backgroundColor: '#4f220987'},
+      }}>
+      <Drawer.Screen
+        name="Categories"
+        component={CategoriesScreen}
+        options={{
+          drawerIcon: ({color, size}) => (
+            <IonIcons name="list-outline" size={size} color={color} />
+          ),
+          title: 'All Categories',
+        }}
+      />
+      <Drawer.Screen
+        name="FavScreen"
+        component={FavrouiteScreen}
+        options={{
+          drawerIcon: ({color, size}) => (
+            <IonIcons name="heart-outline" size={size} color={color} />
+          ),
+          title: 'Favorites',
+        }}
+      />
+    </Drawer.Navigator>
+  );
+}
 
 const App = () => {
   return (
@@ -25,9 +70,9 @@ const App = () => {
             },
           }}>
           <Stack.Screen
-            name="Categories"
-            component={CategoriesScreen}
-            options={{title: 'All Categories'}}
+            name="Drawer"
+            component={DrawerScreens}
+            options={{title: 'All Categories', headerShown: false}}
           />
           <Stack.Screen
             name="CategoriesOverview"
@@ -52,9 +97,3 @@ const App = () => {
 };
 
 export default App;
-
-const styles = StyleSheet.create({
-  app: {
-    backgroundColor: '#24180f',
-  },
-});
