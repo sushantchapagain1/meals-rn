@@ -34,5 +34,3 @@ const CategoriesScreen = ({navigation}: any) => {
 };
 
 export default CategoriesScreen;
-
-const styles = StyleSheet.create({});

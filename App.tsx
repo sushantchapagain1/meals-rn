@@ -9,6 +9,7 @@ import CategoriesOverviewScreen from './screens/CategoriesOverviewScreen';
 import MealsOverviewScreen from './screens/MealsOverviewScreen';
 import FavrouiteScreen from './screens/FavrouiteScreen';
 import IonIcons from 'react-native-vector-icons/Ionicons';
+import {FavProvider} from './store/context/FavContext';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -58,40 +59,42 @@ const App = () => {
   return (
     <>
       <StatusBar barStyle="dark-content" />
-      <NavigationContainer>
-        <Stack.Navigator
-          screenOptions={{
-            headerStyle: {
-              backgroundColor: '#351401',
-            },
-            headerTintColor: 'white',
-            contentStyle: {
-              backgroundColor: '#3f2f25',
-            },
-          }}>
-          <Stack.Screen
-            name="Drawer"
-            component={DrawerScreens}
-            options={{title: 'All Categories', headerShown: false}}
-          />
-          <Stack.Screen
-            name="CategoriesOverview"
-            component={CategoriesOverviewScreen}
-            // we can have access of route and navigation in option obj through a callback
-            // options={({navigation,route}) => {
-            //   const catId = route.params.categoryId;
-            //   return {title: catId};
-            // }}
-          />
-          <Stack.Screen
-            name="MealsDetail"
-            component={MealsOverviewScreen}
-            options={{
-              title: 'Meals Detail',
-            }}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <FavProvider>
+        <NavigationContainer>
+          <Stack.Navigator
+            screenOptions={{
+              headerStyle: {
+                backgroundColor: '#351401',
+              },
+              headerTintColor: 'white',
+              contentStyle: {
+                backgroundColor: '#3f2f25',
+              },
+            }}>
+            <Stack.Screen
+              name="Drawer"
+              component={DrawerScreens}
+              options={{title: 'All Categories', headerShown: false}}
+            />
+            <Stack.Screen
+              name="CategoriesOverview"
+              component={CategoriesOverviewScreen}
+              // we can have access of route and navigation in option obj through a callback
+              // options={({navigation,route}) => {
+              //   const catId = route.params.categoryId;
+              //   return {title: catId};
+              // }}
+            />
+            <Stack.Screen
+              name="MealsDetail"
+              component={MealsOverviewScreen}
+              options={{
+                title: 'Meals Detail',
+              }}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </FavProvider>
     </>
   );
 };
