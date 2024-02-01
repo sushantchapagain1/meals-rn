@@ -1,12 +1,15 @@
 import React from 'react';
 import {Text, View, StyleSheet} from 'react-native';
 
-import {useFav} from '../store/context/FavContext';
+// import {useFav} from '../store/context/FavContext';
 import {MEALS} from '../data/dummy-data';
 import MealList from '../components/MealList';
+import {useSelector} from 'react-redux';
+import {getFavMeals} from '../store/redux/fav.slice';
 
 function FavrouiteScreen() {
-  const {favIds} = useFav();
+  // const {favIds} = useFav();
+  const favIds = useSelector(getFavMeals);
 
   if (favIds.length === 0)
     return (

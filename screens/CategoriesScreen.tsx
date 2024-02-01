@@ -8,12 +8,8 @@ type CategoryItem = {id: string; color: string; title: string};
 
 // getting navigation after using it in stack navigator only native way of doing
 const CategoriesScreen = ({navigation}: any) => {
-  // const navigation = useNavigation();
-  //  we can directly use from hook when we donot have screen in stack navigator.
-
   function handleNavigation(item: CategoryItem) {
     navigation.navigate('CategoriesOverview', {categoryId: item.id});
-    // navigation.navigate('CategoriesOverview', {categoryId: item.id});
   }
 
   return (

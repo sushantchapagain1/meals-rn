@@ -1,15 +1,20 @@
 import React, {useLayoutEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
 import IonIcons from 'react-native-vector-icons/Ionicons';
 
 import {MEALS} from '../data/dummy-data';
-import {useFav} from '../store/context/FavContext';
+import {addFav, getFavMeals, removeFav} from '../store/redux/fav.slice';
+// import {useFav} from '../store/context/FavContext';
 
 const MealsOverviewScreen = ({route, navigation}: any) => {
   const mealId = route.params.mealId;
   const meal = MEALS.find(meal => meal.id === mealId);
 
-  const {favIds, addFav, removeFav} = useFav();
+  // const {favIds, addFav, removeFav} = useFav();
+  const favIds = useSelector(getFavMeals);
+
+  const dispatch = useDispatch();
 
   const isFavorite = favIds.includes(mealId);
 
@@ -29,7 +34,11 @@ const MealsOverviewScreen = ({route, navigation}: any) => {
   });
 
   function toggleFavPress() {
-    isFavorite ? removeFav(mealId) : addFav(mealId);
+    if (isFavorite) {
+      dispatch(removeFav({id: mealId}));
+    } else {
+      dispatch(addFav({id: mealId}));
+    }
   }
 
   return (

@@ -1,16 +1,18 @@
 import 'react-native-gesture-handler';
+import {Provider} from 'react-redux';
 import {StatusBar} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import IonIcons from 'react-native-vector-icons/Ionicons';
 
+import {store} from './store/redux/store';
+// import {FavProvider} from './store/context/FavContext';
+
 import CategoriesScreen from './screens/CategoriesScreen';
 import CategoriesOverviewScreen from './screens/CategoriesOverviewScreen';
 import MealsOverviewScreen from './screens/MealsOverviewScreen';
 import FavrouiteScreen from './screens/FavrouiteScreen';
-
-import {FavProvider} from './store/context/FavContext';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -60,7 +62,8 @@ const App = () => {
   return (
     <>
       <StatusBar barStyle="dark-content" />
-      <FavProvider>
+      {/* <FavProvider> */}
+      <Provider store={store}>
         <NavigationContainer>
           <Stack.Navigator
             screenOptions={{
@@ -95,7 +98,8 @@ const App = () => {
             />
           </Stack.Navigator>
         </NavigationContainer>
-      </FavProvider>
+      </Provider>
+      {/* </FavProvider> */}
     </>
   );
 };
