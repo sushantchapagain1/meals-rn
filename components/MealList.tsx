@@ -1,14 +1,17 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {FlatList, View} from 'react-native';
 import React from 'react';
+import MealCard from './MealCard';
 
-const MealList = () => {
+const MealList = ({items}: any) => {
   return (
     <View>
-      <Text>MealList</Text>
+      <FlatList
+        data={items}
+        keyExtractor={item => item.id}
+        renderItem={items => <MealCard {...items} />}
+      />
     </View>
   );
 };
 
 export default MealList;
-
-const styles = StyleSheet.create({});

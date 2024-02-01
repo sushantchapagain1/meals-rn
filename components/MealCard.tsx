@@ -3,7 +3,7 @@ import {Pressable, StyleSheet, Text, View, Image} from 'react-native';
 import {NavigationProp, useNavigation} from '@react-navigation/native';
 import {RootStackParamList} from '../types.screen';
 
-type TProps = {
+export type TProps = {
   item: {
     id: string;
     imageUrl: string;
