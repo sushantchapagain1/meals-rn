@@ -6,12 +6,12 @@ import {MEALS} from '../data/dummy-data';
 import {useFav} from '../store/context/FavContext';
 
 const MealsOverviewScreen = ({route, navigation}: any) => {
-  const mealsId = route.params.mealsId;
-  const meal = MEALS.find(meal => meal.id === mealsId);
+  const mealId = route.params.mealId;
+  const meal = MEALS.find(meal => meal.id === mealId);
 
   const {favIds, addFav, removeFav} = useFav();
 
-  const isFavorite = favIds.includes(mealsId);
+  const isFavorite = favIds.includes(mealId);
 
   // using useEffect sets the Element or Component only after component has been mounted so
   // we can see a slight deslay while rendering the headerRightIcon so useLayout
@@ -29,7 +29,7 @@ const MealsOverviewScreen = ({route, navigation}: any) => {
   });
 
   function toggleFavPress() {
-    isFavorite ? removeFav(mealsId) : addFav(mealsId);
+    isFavorite ? removeFav(mealId) : addFav(mealId);
   }
 
   return (
