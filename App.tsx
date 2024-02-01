@@ -1,14 +1,15 @@
 import 'react-native-gesture-handler';
-import {StatusBar, Text} from 'react-native';
+import {StatusBar} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createDrawerNavigator} from '@react-navigation/drawer';
+import IonIcons from 'react-native-vector-icons/Ionicons';
 
 import CategoriesScreen from './screens/CategoriesScreen';
 import CategoriesOverviewScreen from './screens/CategoriesOverviewScreen';
 import MealsOverviewScreen from './screens/MealsOverviewScreen';
 import FavrouiteScreen from './screens/FavrouiteScreen';
-import IonIcons from 'react-native-vector-icons/Ionicons';
+
 import {FavProvider} from './store/context/FavContext';
 
 const Stack = createNativeStackNavigator();

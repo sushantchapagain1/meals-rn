@@ -1,9 +1,8 @@
-import {FlatList, StyleSheet} from 'react-native';
 import React from 'react';
-import {CATEGORIES} from '../data/dummy-data';
+import {FlatList} from 'react-native';
 
 import CategoryCard from '../components/CategoryCard';
-import {useNavigation} from '@react-navigation/native';
+import {CATEGORIES} from '../data/dummy-data';
 
 type CategoryItem = {id: string; color: string; title: string};
 

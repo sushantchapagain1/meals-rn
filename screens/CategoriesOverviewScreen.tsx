@@ -1,5 +1,6 @@
-import {FlatList, Image, Pressable, StyleSheet, Text, View} from 'react-native';
 import React, {useLayoutEffect} from 'react';
+import {FlatList, Image, Pressable, StyleSheet, Text, View} from 'react-native';
+
 import {CATEGORIES, MEALS} from '../data/dummy-data';
 
 const CategoriesOverviewScreen = ({navigation, route}: any) => {

@@ -1,8 +1,8 @@
-import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
 import React, {useLayoutEffect} from 'react';
-import {MEALS} from '../data/dummy-data';
-
+import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
 import IonIcons from 'react-native-vector-icons/Ionicons';
+
+import {MEALS} from '../data/dummy-data';
 import {useFav} from '../store/context/FavContext';
 
 const MealsOverviewScreen = ({route, navigation}: any) => {
